@@ -33,21 +33,21 @@ model simple()
 
   ### Flow rates
   const QC := QCC * BW^0.75 # cardiac output adjusted for body weight [L/h] 
-  const QL := QC * QLc     # blood flow to liver [L/h]
-  const QR := QC * QRc     # blood flow to rest-of-body [L/h]
+  const QL := QC * QLc      # blood flow to liver [L/h]
+  const QR := QC * QRc      # blood flow to rest-of-body [L/h]
 
   # Compartments
+  compartment Gut
   compartment Blood := BW * VBc
   compartment Liver := BW * VLc
   compartment Rest := BW * VRc
-  compartment Gut
   compartment Urine
 
   # Species
+  substanceOnly species AGut in Gut
   substanceOnly species ABlood in Blood
   substanceOnly species ALiver in Liver
   substanceOnly species ARest in Rest
-  substanceOnly species AGut in Gut
   substanceOnly species AUrine in Urine
 
   # Initial values
