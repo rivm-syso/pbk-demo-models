@@ -17,14 +17,14 @@ model simple()
 
   ## Biochemical parameters
 
-  #### Partition coefficients
+  ### Partition coefficients
   PCLiver = 2        # partition coefficient liver:blood [-]
   PCRest = 1.2       # partition coefficient rest:blood [-]
 
-  #### Metabolism and excretion
+  ### Metabolism and excretion
   CLUrine = 1        # urinary excretion rate [L/h]
 
-  #### Absorption
+  ### Absorption
   Ka = 0.05          # absorption rate from gut to liver [/h]
 
   # Assignments
