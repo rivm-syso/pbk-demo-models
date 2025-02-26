@@ -44,7 +44,7 @@ model simple_dermal()
   compartment Skin := BSA * FSkinExposed * SkinThickness
   compartment Blood := BW * VBc
   compartment Liver := BW * VLc
-  compartment Rest := BW * VRc
+  compartment Rest := BW * VRc - BSA * SkinThickness
   compartment Urine
 
   # Species
