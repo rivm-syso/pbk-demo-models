@@ -22,7 +22,7 @@ model simple()
   PCRest = 1.2       # partition coefficient rest:blood [-]
 
   ### Metabolism and excretion
-  CLUrine = 1        # urinary excretion rate [L/h]
+  CLUrine = 10       # urinary excretion rate [L/h]
 
   ### Absorption
   Ka = 0.05          # absorption rate from gut to liver [/h]
