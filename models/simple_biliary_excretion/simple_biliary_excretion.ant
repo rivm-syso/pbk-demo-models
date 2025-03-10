@@ -1,0 +1,81 @@
+model simple_biliary_excretion()
+
+  # Simple PBK model with biliary excretion based of PFOA PBK model of Husoy et al.
+  # Created by Carolina Vogs.
+
+  # Parameters
+
+  ## Physiology
+
+  ### Body size
+  BW = 60            # body weight [kg]
+  VGc = 0.0171       # gut volume as fraction body weight [L/kg]
+  VLc = 0.026        # liver volume as fraction of body weight [L/kg]
+  VBc = 0.0428       # blood volume as fraction of body weight [L/kg]
+
+  ### Fraction of Flow rates
+  QCc = 12.5	       # cardiac output as function of body weight [L/h/kg^0.75]
+  QGc = 0.181        # fraction of blood flow to gut [-]
+  QLc = 0.25         # fraction of blood flow to liver [-]
+
+  ## Biochemical parameters
+
+  #### Partition coefficients
+  PCLiver = 2.2      # partition coefficient liver:blood [-]
+  PCGut = 0.05       # partition coefficient gut:blood [-]
+
+  #### Binding to albumin
+  Free = 0.02        # free Fraction of the compound [-]
+
+  #### Excretion
+  Kbiliaryc = 0.000109  # biliary excretion rate [L/h/kg]
+  KfeacesC = 0.00000217 # faecal elimination rate [L/h/kg]
+
+  # Assignments
+
+  ## Physiology
+
+  ### Flow rates
+  const QC := QCc * BW^0.75  # cardiac output adjusted for body weight [L/h] 
+  const QL := QC * QLc       # blood flow to liver [L/h]
+  const QG := QC * QGc       # blood flow to gut [L/h]
+
+  ## Kinetic Rates
+  const Kbiliary := Kbiliaryc * BW^0.1 # [L/h]
+  const Kfeaces := KfeacesC * BW^0.001 # [L/h]
+
+  # Compartments
+  compartment Blood := BW * VBc
+  compartment Liver := BW * VLc
+  compartment Gut := BW * VGc
+  compartment Feaces
+
+  # Species
+  substanceOnly species AGut in Gut
+  substanceOnly species ABlood in Blood
+  substanceOnly species ALiver in Liver
+  substanceOnly species AFeaces in Feaces
+
+  # Initial values
+  ABlood = 0
+  ALiver = 0
+  AGut = 0
+  AFeaces = 0
+
+  # Model equations
+
+  ## Absorption
+  AGut -> ALiver; QG * Free * (AGut / Gut) / PCGut
+  AGut -> ABlood; QG * Free * (AGut / Gut) / PCGut
+
+  ## Distribution
+  ABlood -> ALiver; QL * Free * (ABlood / Blood) / Free
+  ABlood -> AGut; QG * Free * (ABlood / Blood) / Free
+
+  ALiver -> ABlood; (QL + QG) * Free * (ALiver / Liver) / PCLiver
+  ALiver -> AGut; Kbiliary * Free * (ALiver / Liver) / PCLiver 
+
+  ## Excretion
+  AGut -> AFeaces; Kfeaces * Free * (AGut / Gut) / PCGut
+
+end
