@@ -5,7 +5,12 @@ Simple PBK model modelling the inhalation exposure route via alveolar air. This 
 ## Considerations
 
 * In this model, the alveolar air compartment explicitly models the alveolar air, which is only part of the total air in the lungs.
-* The alveolar ventilation rate of 2220 L/h seems to be very high. Yet, this is the same as used in the EuroMix PBK model by Tebby et al. (2020), which was based on Brown et al. (1997).
+* Transfer from alveolar air to blood (inhalation) is modelled as perfusion limited (using blood flow rate).
+* Transfer from blood to alveolar air (exhalation) is modelled as ventilation limited (using alveolar ventilation rate).
+* Tebby et al. (2020) used an alveolar ventilation rate of 2220 L/h in the EuroMix PBK model, which was based on Brown et al. (1997). This seems to be unrealistically high. Therefore instead, an alternative value of 252 L/h was used as model default, based on the following consideration: 
+    * alveolar ventilation rate = (Tidal volume – dead space volume) x respiratory rate
+    * alveolar ventilation rate = (500 ml (male)/400 mL (female) – 150 mL) x 12 breaths/minute = 4200 mL/min = 252 L/h (male)
+
 
 ## References
 

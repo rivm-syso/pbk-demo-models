@@ -36,7 +36,7 @@ model simple()
   const QR := QC * QRc      # blood flow to rest-of-body [L/h]
 
   ### Lung parameters
-  Falv = 2220               # alveolar ventilation rate [L/h]
+  Falv = 252                # alveolar ventilation rate [L/h]
 
   # Compartments
   compartment Alveolar := BW * VAlvc
