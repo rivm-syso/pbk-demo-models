@@ -1,7 +1,7 @@
-model simple_biliary_excretion()
+# Simple PBK model with biliary excretion based of PFOA PBK model of Husoy et al.
+# Created by Carolina Vogs.
 
-  # Simple PBK model with biliary excretion based of PFOA PBK model of Husoy et al.
-  # Created by Carolina Vogs.
+model simple_biliary_excretion()
 
   # Parameters
 
