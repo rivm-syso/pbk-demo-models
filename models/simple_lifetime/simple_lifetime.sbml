@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
-  <model metaid="simple" id="simple" substanceUnits="MicroGM" timeUnits="HR" volumeUnits="L" extentUnits="MicroGM">
+  <model metaid="simple_lifetime" id="simple_lifetime" substanceUnits="MicroGM" timeUnits="HR" volumeUnits="L" extentUnits="MicroGM">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="f_BW">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> age </ci>
+            </bvar>
+            <bvar>
+              <ci> BW_birth </ci>
+            </bvar>
+            <bvar>
+              <ci> BW_adult </ci>
+            </bvar>
+            <bvar>
+              <ci> k_growth </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> BW_adult </ci>
+              <apply>
+                <exp/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <ln/>
+                    <apply>
+                      <divide/>
+                      <ci> BW_birth </ci>
+                      <ci> BW_adult </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <exp/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <minus/>
+                        <ci> k_growth </ci>
+                      </apply>
+                      <ci> age </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
     <listOfUnitDefinitions>
       <unitDefinition id="MicroGM">
         <listOfUnits>
@@ -32,6 +81,11 @@
           <unit kind="second" exponent="-1" scale="0" multiplier="3600"/>
         </listOfUnits>
       </unitDefinition>
+      <unitDefinition id="UNITLESS">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
       <unitDefinition id="L_PER_KiloGM">
         <listOfUnits>
           <unit kind="litre" exponent="1" scale="0" multiplier="1"/>
@@ -45,11 +99,6 @@
           <unit kind="gram" exponent="-0.75" scale="3" multiplier="1"/>
         </listOfUnits>
       </unitDefinition>
-      <unitDefinition id="UNITLESS">
-        <listOfUnits>
-          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1"/>
-        </listOfUnits>
-      </unitDefinition>
       <unitDefinition id="L_PER_HR">
         <listOfUnits>
           <unit kind="litre" exponent="1" scale="0" multiplier="1"/>
@@ -58,7 +107,7 @@
       </unitDefinition>
     </listOfUnitDefinitions>
     <listOfCompartments>
-      <compartment metaid="meta_Gut" id="Gut" name="gut" spatialDimensions="3" size="1" units="L" constant="true">
+      <compartment metaid="meta_Gut" id="Gut" name="gut" spatialDimensions="3" units="L" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_Gut">
@@ -76,7 +125,7 @@
           </rdf:RDF>
         </annotation>
       </compartment>
-      <compartment metaid="meta_Blood" id="Blood" name="blood" spatialDimensions="3" size="0.259" units="L" constant="false">
+      <compartment metaid="meta_Blood" id="Blood" name="blood" spatialDimensions="3" units="L" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_Blood">
@@ -89,7 +138,7 @@
           </rdf:RDF>
         </annotation>
       </compartment>
-      <compartment metaid="meta_Liver" id="Liver" name="liver" spatialDimensions="3" size="0.08995" units="L" constant="false">
+      <compartment metaid="meta_Liver" id="Liver" name="liver" spatialDimensions="3" units="L" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_Liver">
@@ -107,7 +156,7 @@
           </rdf:RDF>
         </annotation>
       </compartment>
-      <compartment metaid="meta_Rest" id="Rest" name="rest-of-body" spatialDimensions="3" size="3.15105" units="L" constant="false">
+      <compartment metaid="meta_Rest" id="Rest" name="rest-of-body" spatialDimensions="3" units="L" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_Rest">
@@ -120,7 +169,7 @@
           </rdf:RDF>
         </annotation>
       </compartment>
-      <compartment metaid="meta_Urine" id="Urine" name="urine" spatialDimensions="3" size="1" units="L" constant="true">
+      <compartment metaid="meta_Urine" id="Urine" name="urine" spatialDimensions="3" units="L" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_Urine">
@@ -140,7 +189,7 @@
       </compartment>
     </listOfCompartments>
     <listOfSpecies>
-      <species metaid="meta_AGut" id="AGut" name="amount of chemical in gut" compartment="Gut" initialAmount="0" substanceUnits="MicroGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+      <species metaid="meta_AGut" id="AGut" name="amount of chemical in gut" compartment="Gut" initialConcentration="0" substanceUnits="MicroGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_AGut">
@@ -153,8 +202,20 @@
           </rdf:RDF>
         </annotation>
       </species>
-      <species id="ABlood" name="amount of chemical in blood" compartment="Blood" initialAmount="0" substanceUnits="MicroGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
-      <species metaid="meta_ALiver" id="ALiver" name="amount of chemical in liver" compartment="Liver" initialAmount="0" substanceUnits="MicroGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+      <species metaid="meta_ABlood" id="ABlood" name="amount of chemical in blood" compartment="Blood" initialConcentration="0" substanceUnits="MicroGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_ABlood">
+              <bqmodel:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://purl.obolibrary.org/obo/PBPKO_00623"/>
+                </rdf:Bag>
+              </bqmodel:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="meta_ALiver" id="ALiver" name="amount of chemical in liver" compartment="Liver" initialConcentration="0" substanceUnits="MicroGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_ALiver">
@@ -167,7 +228,7 @@
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_ARest" id="ARest" name="amount of chemical in rest-of-body" compartment="Rest" initialAmount="0" substanceUnits="MicroGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+      <species metaid="meta_ARest" id="ARest" name="amount of chemical in rest-of-body" compartment="Rest" initialConcentration="0" substanceUnits="MicroGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_ARest">
@@ -180,7 +241,7 @@
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_AUrine" id="AUrine" name="amount of chemical in urine" compartment="Urine" initialAmount="0" substanceUnits="MicroGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+      <species metaid="meta_AUrine" id="AUrine" name="amount of chemical in urine" compartment="Urine" initialConcentration="0" substanceUnits="MicroGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_AUrine">
@@ -195,12 +256,30 @@
       </species>
     </listOfSpecies>
     <listOfParameters>
-      <parameter id="AgeInit" name="age at start of simulation" value="0" units="YR" constant="true"/>
-      <parameter id="Age" name="age during simulation" value="0" units="YR" constant="false"/>
-      <parameter metaid="meta_BWInit" id="BWInit" name="body weight at start of simulation" value="3.5" units="KiloGM" constant="true">
+      <parameter id="AgeInit" name="age at start of simulation" value="10" units="YR" constant="true"/>
+      <parameter id="BWRef" name="body weight of reference indvididual in simulation" value="50" units="KiloGM" constant="true"/>
+      <parameter id="AgeRef" name="current age of reference indvididual in simulation" value="18" units="YR" constant="true"/>
+      <parameter metaid="meta_Age" id="Age" name="age during simulation" units="YR" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
-            <rdf:Description rdf:about="#meta_BWInit">
+            <rdf:Description rdf:about="#meta_Age">
+              <bqmodel:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://purl.obolibrary.org/obo/PBPKO_00521"/>
+                </rdf:Bag>
+              </bqmodel:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </parameter>
+      <parameter id="BWBirth" name="population nominal body weight at birth" value="3.5" units="KiloGM" constant="true"/>
+      <parameter id="BWAdult" name="population nominal asymptotic/mature body weight" value="70" units="KiloGM" constant="true"/>
+      <parameter id="kGrowth" name="bodyweight growth-rate constant" value="0.2" units="PER_H" constant="true"/>
+      <parameter id="deltaBW" name="relative body weight of reference individual compared to population nominal body weight" units="UNITLESS" constant="false"/>
+      <parameter metaid="meta_BW" id="BW" name="body weight during simulation" units="KiloGM" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_BW">
               <bqmodel:is>
                 <rdf:Bag>
                   <rdf:li rdf:resource="http://purl.obolibrary.org/obo/PBPKO_00008"/>
@@ -210,9 +289,6 @@
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter id="BW" name="body weight during simulation" value="3.5" units="KiloGM" constant="false"/>
-      <parameter id="BWAdult" name="asymptotic/mature body weight" value="70" units="KiloGM" constant="true"/>
-      <parameter id="kGrowth" name="growth-rate constant" value="3e-05" units="PER_H" constant="true"/>
       <parameter metaid="meta_VRc" id="VRc" name="rest-of-body as fraction of total bodyweight" value="0.9003" units="L_PER_KiloGM" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
@@ -331,7 +407,7 @@
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_QC" id="QC" name="cardiac output" value="38.3832983997238" units="L_PER_HR" constant="false">
+      <parameter metaid="meta_QC" id="QC" name="cardiac output" units="L_PER_HR" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_QC">
@@ -344,7 +420,7 @@
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_QL" id="QL" name="blood flow to liver" value="8.7130087367373" units="L_PER_HR" constant="false">
+      <parameter metaid="meta_QL" id="QL" name="blood flow to liver" units="L_PER_HR" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_QL">
@@ -357,7 +433,7 @@
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_QR" id="QR" name="blood flow to rest-of-body" value="29.6702896629865" units="L_PER_HR" constant="false">
+      <parameter metaid="meta_QR" id="QR" name="blood flow to rest-of-body" units="L_PER_HR" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_QR">
@@ -371,7 +447,13 @@
         </annotation>
       </parameter>
     </listOfParameters>
-    <listOfInitialAssignments/>
+    <listOfInitialAssignments>
+      <initialAssignment symbol="Age">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> AgeInit </ci>
+        </math>
+      </initialAssignment>
+    </listOfInitialAssignments>
     <listOfRules>
       <assignmentRule variable="Blood">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -403,37 +485,46 @@
       <rateRule variable="Age">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
-            <times/>
-            <apply>
-              <divide/>
-              <cn type="integer"> 1 </cn>
-              <apply>
-                <times/>
-                <cn type="integer"> 24 </cn>
-                <cn type="integer"> 365 </cn>
-              </apply>
-            </apply>
+            <divide/>
             <cn type="integer"> 1 </cn>
+            <apply>
+              <times/>
+              <cn type="integer"> 24 </cn>
+              <cn> 365.25 </cn>
+            </apply>
           </apply>
         </math>
       </rateRule>
-      <rateRule variable="BW">
+      <assignmentRule variable="deltaBW">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> BWRef </ci>
+            <apply>
+              <ci> f_BW </ci>
+              <ci> AgeRef </ci>
+              <ci> BWBirth </ci>
+              <ci> BWAdult </ci>
+              <ci> kGrowth </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="BW">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
             <times/>
-            <ci> kGrowth </ci>
+            <ci> deltaBW </ci>
             <apply>
-              <ln/>
-              <apply>
-                <divide/>
-                <ci> BWAdult </ci>
-                <ci> BW </ci>
-              </apply>
+              <ci> f_BW </ci>
+              <ci> Age </ci>
+              <ci> BWBirth </ci>
+              <ci> BWAdult </ci>
+              <ci> kGrowth </ci>
             </apply>
-            <ci> BW </ci>
           </apply>
         </math>
-      </rateRule>
+      </assignmentRule>
       <assignmentRule variable="QC">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>

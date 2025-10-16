@@ -1,8 +1,19 @@
 idModelInstance,Parameter,Value,Unit,Description,Reference
+<<<<<<< HEAD
 simple_PARAM,AgeInit,0.0,y,age at start of simulation,
 simple_PARAM,BWInit,3.5,kg,body weight at start of simulation,
 simple_PARAM,BWAdult,70.0,kg,asymptotic/mature body weight,
 simple_PARAM,kGrowth,3e-05,/h,growth-rate constant,
+=======
+simple_PARAM,AgeInit,10.0,y,age at start of simulation,
+simple_PARAM,BWBirth,3.5,,,
+simple_PARAM,BWAdult,70.0,kg,asymptotic/mature body weight,
+simple_PARAM,kGrowth,3e-05,/h,growth-rate constant,
+simple_PARAM,BW_ref,50.0,,,
+simple_PARAM,age_ref,18.0,,,
+simple_PARAM,BWInit,40.0,kg,body weight at start of simulation,
+simple_PARAM,delta_BW,0.733416836341024,,,
+>>>>>>> 102ca1c (Refactor simple lifetime model to implement detlaBW)
 simple_PARAM,VRc,0.9003,L/kg,rest-of-body as fraction of total bodyweight,
 simple_PARAM,VLc,0.0257,L/kg,liver as fraction of total bodyweight,
 simple_PARAM,VBc,0.074,L/kg,blood as fraction of total bodyweight,

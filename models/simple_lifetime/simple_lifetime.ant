@@ -1,19 +1,29 @@
-model simple()
+function f_BW(age, BW_birth, BW_adult, k_growth)
+    BW_adult * exp(log(BW_birth / BW_adult) * exp(-k_growth * age))
+end
+
+model simple_lifetime()
 
   # Parameters
 
   ## Physiology
 
   ### Age
-  AgeInit = 0        # age at start of simulation [yr]
+  AgeInit = 10       # body weight at start of simulation [kg]
+
+  BWRef = 50         # reference body weight [kg]
+  AgeRef = 18        # reference age [kg]
+
   Age = AgeInit      # age during simulation [yr]
 
   ### Body size
-  BWInit = 3.5       # body weight at start of simulation [kg]
-  var BW = BWInit        # body weight during simulation [kg]
+  BWBirth = 3.5      # body weight at start of simulation [kg]
   BWAdult = 70.0     # asymptotic/mature body weight [kg]
-  kGrowth = 3e-5     # growth-rate constant [1/h]
+  kGrowth = 0.2      # growth-rate constant [1/h]
 
+  deltaBW := BWRef / f_BW(AgeRef, BWBirth, BWAdult, kGrowth)  # individual deviation of nominal BW [-]
+  BW := deltaBW * f_BW(Age, BWBirth, BWAdult, kGrowth)        # body weight during simulation [kg]
+  
   ### Compartment sizes
   VRc = 0.9003       # rest-of-body volume as fraction body weight [L/kg]
   VLc = 0.0257       # liver volume as fraction of body weight [L/kg]
@@ -69,8 +79,7 @@ model simple()
   # Model equations
 
   ## Growth
-  Age' = (1/(24*365)) * 1 # Age increase
-  BW' = kGrowth * log(BWAdult / BW) * BW
+  Age' = 1/(24*365.25) # Age increase
 
   ## Absorption
   AGut -> ALiver; AGut * Ka
