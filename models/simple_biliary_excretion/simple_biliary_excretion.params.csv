@@ -1,0 +1,13 @@
+idModelInstance,Parameter,Value,Unit,Description,Reference
+simple_biliary_excretion_PARAM,BW,60.0,kg,body weight,
+simple_biliary_excretion_PARAM,VGc,0.0171,L/kg,,
+simple_biliary_excretion_PARAM,VLc,0.026,L/kg,,
+simple_biliary_excretion_PARAM,VBc,0.0428,L/kg,,
+simple_biliary_excretion_PARAM,QCc,12.5,L/h/kg^0.75,,
+simple_biliary_excretion_PARAM,QGc,0.181,dimensionless,,
+simple_biliary_excretion_PARAM,QLc,0.25,dimensionless,,
+simple_biliary_excretion_PARAM,PCLiver,2.2,dimensionless,,
+simple_biliary_excretion_PARAM,PCGut,0.05,dimensionless,,
+simple_biliary_excretion_PARAM,Free,0.02,dimensionless,,
+simple_biliary_excretion_PARAM,Kbiliaryc,0.000109,L/kg/h,,
+simple_biliary_excretion_PARAM,KfeacesC,2.17e-06,L/kg/h,,

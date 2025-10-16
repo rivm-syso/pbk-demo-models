@@ -23,6 +23,7 @@ models_path = './models/'
 from sbmlpbkutils import PbkModelValidator
 from sbmlpbkutils import AnnotationsTemplateGenerator
 from sbmlpbkutils import PbkModelAnnotator
+from sbmlpbkutils import ParametrisationsTemplateGenerator
 
 def create_file_logger(logfile: str) -> logging.Logger:
     logger = logging.getLogger(uuid.uuid4().hex)
@@ -66,6 +67,15 @@ for model_path in model_folders:
                 logger = logger
             )
             ls.writeSBML(document, str(annotated_sbml_file))
+
+            parametrisation_file = Path(sbml_file).with_suffix('.params.csv')
+            if not os.path.exists(parametrisation_file):
+                # create annotations (csv) file if it does not exist
+                print(f"Annotations file not found: creating parametrisations file [{annotations_file}].")
+                model = document.getModel()
+                parametrisations_template_generator = ParametrisationsTemplateGenerator()
+                (instances, parametrisations) = parametrisations_template_generator.generate(model)
+                parametrisations.to_csv(parametrisation_file, index=False)
 
             validation_log_file = Path(sbml_file).with_suffix('.validation.log')
             validator = PbkModelValidator()
