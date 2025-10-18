@@ -55,7 +55,7 @@
       </unitDefinition>
     </listOfUnitDefinitions>
     <listOfCompartments>
-      <compartment metaid="meta_Blood" id="Blood" name="blood" spatialDimensions="3" size="2.568" units="L" constant="false">
+      <compartment metaid="meta_Blood" id="Blood" name="blood" spatialDimensions="3" units="L" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_Blood">
@@ -68,7 +68,7 @@
           </rdf:RDF>
         </annotation>
       </compartment>
-      <compartment metaid="meta_Liver" id="Liver" name="liver" spatialDimensions="3" size="1.56" units="L" constant="false">
+      <compartment metaid="meta_Liver" id="Liver" name="liver" spatialDimensions="3" units="L" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_Liver">
@@ -81,7 +81,7 @@
           </rdf:RDF>
         </annotation>
       </compartment>
-      <compartment metaid="meta_Gut" id="Gut" name="gut" spatialDimensions="3" size="1.026" units="L" constant="false">
+      <compartment metaid="meta_Gut" id="Gut" name="gut" spatialDimensions="3" units="L" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_Gut">
@@ -94,7 +94,7 @@
           </rdf:RDF>
         </annotation>
       </compartment>
-      <compartment metaid="meta_Feaces" id="Feaces" name="feaces" spatialDimensions="3" size="1" units="L" constant="true">
+      <compartment metaid="meta_Feaces" id="Feaces" name="feaces" spatialDimensions="3" units="L" constant="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_Feaces">
@@ -109,7 +109,7 @@
       </compartment>
     </listOfCompartments>
     <listOfSpecies>
-      <species metaid="meta_AGut" id="AGut" name="amount of chemical in gut" compartment="Gut" initialAmount="0" substanceUnits="NanoGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+      <species metaid="meta_AGut" id="AGut" name="amount of chemical in gut" compartment="Gut" initialConcentration="0" substanceUnits="NanoGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_AGut">
@@ -127,7 +127,7 @@
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_ABlood" id="ABlood" name="amount of chemical in blood" compartment="Blood" initialAmount="0" substanceUnits="NanoGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+      <species metaid="meta_ABlood" id="ABlood" name="amount of chemical in blood" compartment="Blood" initialConcentration="0" substanceUnits="NanoGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_ABlood">
@@ -145,7 +145,7 @@
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_ALiver" id="ALiver" name="amount of chemical in liver" compartment="Liver" initialAmount="0" substanceUnits="NanoGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+      <species metaid="meta_ALiver" id="ALiver" name="amount of chemical in liver" compartment="Liver" initialConcentration="0" substanceUnits="NanoGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_ALiver">
@@ -163,7 +163,7 @@
           </rdf:RDF>
         </annotation>
       </species>
-      <species metaid="meta_AFeaces" id="AFeaces" name="amount of chemical in feaces" compartment="Feaces" initialAmount="0" substanceUnits="NanoGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+      <species metaid="meta_AFeaces" id="AFeaces" name="amount of chemical in feaces" compartment="Feaces" initialConcentration="0" substanceUnits="NanoGM" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_AFeaces">
@@ -364,7 +364,7 @@
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_QC" id="QC" value="269.478083972313" units="L_PER_HR" constant="false">
+      <parameter metaid="meta_QC" id="QC" units="L_PER_HR" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_QC">
@@ -377,7 +377,7 @@
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_QL" id="QL" value="67.3695209930783" units="L_PER_HR" constant="false">
+      <parameter metaid="meta_QL" id="QL" units="L_PER_HR" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_QL">
@@ -390,7 +390,7 @@
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_QG" id="QG" value="48.7755331989887" units="L_PER_HR" constant="false">
+      <parameter metaid="meta_QG" id="QG" units="L_PER_HR" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_QG">
@@ -403,7 +403,7 @@
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_Kbiliary" id="Kbiliary" value="0.000164150278153027" units="L_PER_HR" constant="false">
+      <parameter metaid="meta_Kbiliary" id="Kbiliary" units="L_PER_HR" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_Kbiliary">
@@ -421,7 +421,7 @@
           </rdf:RDF>
         </annotation>
       </parameter>
-      <parameter metaid="meta_Kfeaces" id="Kfeaces" value="2.17890294111715e-06" units="L_PER_HR" constant="false">
+      <parameter metaid="meta_Kfeaces" id="Kfeaces" units="L_PER_HR" constant="false">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_Kfeaces">
